@@ -1,0 +1,32 @@
+body {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid #333;
+  width: 500px; 
+  height: 500px;
+  
+}
+.grid-square {
+  background-color: white;
+  border: 0.5px solid #eee;
+  flex: 0 0 calc( 100% / var(--p));
+  box-sizing: border-box;
+  aspect-ratio: 1 / 1;
+}
+
+.grid-square:hover {
+  background-color: #555;
+}
+.grid-square:active {
+  background-color: red;
+}
+.grid-square:focus {
+  background-color: #e80909;
+}
