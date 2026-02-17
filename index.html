@@ -7,7 +7,15 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div id="grid-container"></div>
+    <div id="parent-container">
+      <div class="pixel-color">
+        <label for="pixel-btn">Adjust the pixel:</label>
+        <input type="text" id="pixel-btn">
+        <label for="color-picker">Choose your color:</label>
+        <input type="color" id="color-picker" name="color-picker" value="#ff0000">
+      </div>
+      <div id="grid-container"></div>
+    </div>
 
    <script src="script.js"></script>
   </body>
