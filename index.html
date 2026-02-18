@@ -7,15 +7,21 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <div class="intro">
+      <h1>Etch-a-Sketch</h1>
+      <h2>2026</h2>
+    </div>  
     <div id="parent-container">
-      <div class="pixel-color">
+      <div class="pixel">
+        <button id="eraser">Erase</button>
         <label for="pixel-btn">Adjust the pixel:</label>
         <input type="text" id="pixel-btn">
         <label for="color-picker">Choose your color:</label>
-        <input type="color" id="color-picker" name="color-picker" value="#ff0000">
+        <input type="color" id="color-picker" name="color-picker" value="#000000">
       </div>
       <div id="grid-container"></div>
     </div>
+    <h3>Built by PlanR</h3>
 
    <script src="script.js"></script>
   </body>
