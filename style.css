@@ -54,6 +54,3 @@ input[type="text"] {
 .grid-square:hover {
   background-color: #555;
 }
-.grid-square:focus {
-  background-color: #e80909;
-}

@@ -5,14 +5,14 @@ const colorPicker = document.querySelector("#color-picker");
 const eraser = document.querySelector("#eraser");
 
 
-createGrid(36);
-  draw();
+createGrid(100);
+draw();
 
 function createGrid(size) {
-  if (size > 100 || size < 0 || !Number.isInteger(size)) {
-     container.innerHTML = ' ';
-     const para = document.createElement('h1');
-     para.textContent = "Pixel should not be less than 0 or greater than 100.";
+  if (size < 1 || size > 130 || !Number.isInteger(size)) {
+     container.innerHTML = '';
+     const para = document.createElement('h3');
+     para.textContent = "Pixel should not be less than 0 or greater than 130.";
      container.appendChild(para)
     return;
   }
@@ -32,34 +32,39 @@ function createGrid(size) {
 
 function draw() {
   let squares = document.querySelectorAll(".grid-square");
-  let currentIndex = Math.floor(squares.length / 2);
+  let size = Math.sqrt(squares.length);
+  let row = Math.floor(size / 2)
+  let col = Math.floor(size / 2);
+  let currentIndex = row * size + col;
   squares[currentIndex].style.background = colorPicker.value;
 
   container.tabIndex = 0;
   container.focus();
 
-  container.addEventListener("keydown", (e) => {
+  container.removeEventListener("keydown", handleKeydown);
+  container.addEventListener("keydown", handleKeydown)
+  function handleKeydown(e) {
     if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
       e.preventDefault();
     }
-
-    const squares = document.querySelectorAll('.grid-square');
+   // const squares = document.querySelectorAll('.grid-square');
     let nextIndex = currentIndex;
+   // let gridSize = Math.sqrt(squares.length);
 
     switch (e.key) {
-      case 'ArrowUp': nextIndex = currentIndex - pixel; break;
-      case 'ArrowDown': nextIndex = currentIndex + pixel; break;
+      case 'ArrowUp': nextIndex = currentIndex - size; break;
+      case 'ArrowDown': nextIndex = currentIndex + size; break;
       case 'ArrowLeft': nextIndex = currentIndex - 1; break;
       case 'ArrowRight': nextIndex = currentIndex +1; break;
     }
-
     if (nextIndex >= 0 && nextIndex < squares.length) {
       currentIndex = nextIndex;
       squares[currentIndex].style.background = colorPicker.value;
     }
-  });
+  };
 };
-let pixel = 36;
+
+let pixel = 100;
 //to get the pixel value/number/size
 pixelBtn.addEventListener("change", () => {
    pixel = Number(pixelBtn.value);
@@ -67,6 +72,6 @@ pixelBtn.addEventListener("change", () => {
    draw();
 });
 eraser.addEventListener("click", () => {
-    createGrid(pixel || 36);
+    createGrid(pixel || 100);
     draw();
 });
